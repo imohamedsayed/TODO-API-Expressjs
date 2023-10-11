@@ -11,7 +11,7 @@ const deleteImages = (images) => {
   });
 };
 const getImage = (file) => {
-  let name = file.path.substring(file.path.lastIndexOf("\\uploads") + 1);
+  let name = file.path.substring(file.path.lastIndexOf("\\uploads") + 9);
   return name;
 };
 

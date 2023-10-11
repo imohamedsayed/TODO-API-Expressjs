@@ -9,12 +9,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:8080",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
-app.use(express.static("./uploads"));
-
+app.use("/images", express.static("./uploads"));
 
 app.listen(process.env.PORT || 8000, () => {
   mongoose
@@ -30,6 +29,11 @@ app.listen(process.env.PORT || 8000, () => {
     });
 });
 
-app.get("*", () => {
+// Routes
+app.use("/auth", require("./routes/AuthRoutes"));
+app.use("/user", require("./routes/UserRoutes"));
+
+// Not found url
+app.get("*", (req, res) => {
   res.status(404).json({ message: "Requested endpoint is not available" });
 });

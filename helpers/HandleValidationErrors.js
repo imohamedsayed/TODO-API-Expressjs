@@ -5,7 +5,10 @@ const AuthErrors = (err) => {
     errors.email = "This email is already exists";
   }
 
-  if (err.message.includes("User validation failed")) {
+  if (
+    err.message.includes("User validation failed") ||
+    err.message.includes("Validation failed")
+  ) {
     Object.values(err.errors).forEach(({ properties }) => {
       errors[properties.path] = properties.message;
     });
