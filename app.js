@@ -32,6 +32,7 @@ app.listen(process.env.PORT || 8000, () => {
 // Routes
 app.use("/auth", require("./routes/AuthRoutes"));
 app.use("/user", require("./routes/UserRoutes"));
+app.use("/tasks", require("./routes/TaskRoutes"));
 
 // Not found url
 app.get("*", (req, res) => {

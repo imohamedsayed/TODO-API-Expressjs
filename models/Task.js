@@ -5,7 +5,7 @@ const TaskSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: [true, "Blog must belong to a specific user"],
+    required: [true, "task must belong to a specific user"],
   },
   title: {
     type: String,
@@ -14,6 +14,10 @@ const TaskSchema = new mongoose.Schema({
   },
   description: {
     type: String,
+    trim: true,
+  },
+  deadline: {
+    type: Date,
     trim: true,
   },
   image: {
